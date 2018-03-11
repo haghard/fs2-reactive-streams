@@ -1,6 +1,10 @@
 import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
 import ReleaseTransformations._
 
+import com.scalapenos.sbt.prompt.SbtPrompt.autoImport._
+
+promptTheme := com.scalapenos.sbt.prompt.PromptThemes.ScalapenosTheme
+
 lazy val buildSettings = Seq(
   organization := "com.github.zainab-ali",
   crossScalaVersions := List("2.12.4", "2.11.12"),
@@ -28,7 +32,7 @@ lazy val commonSettings = Seq(
     resolvers ++= commonResolvers,
     scalacOptions ++= commonScalacOptions,
     libraryDependencies ++= Seq(
-      "co.fs2" %% "fs2-core" % "0.10.1",
+      "co.fs2" %% "fs2-core" % "0.10.2",
       "org.reactivestreams" % "reactive-streams" % "1.0.2",
       "org.scalatest" %% "scalatest" % "3.0.4" % "test",
       "org.scalacheck" %% "scalacheck" % "1.13.5" % "test",
@@ -37,7 +41,7 @@ lazy val commonSettings = Seq(
   ) ++ coverageSettings ++ buildSettings
 
 lazy val docSettings = Seq(
-    libraryDependencies ++= Seq("com.typesafe.akka" %% "akka-stream" % "2.5.4"),
+    libraryDependencies ++= Seq("com.typesafe.akka" %% "akka-stream" % "2.5.11"),
     tutTargetDirectory := (baseDirectory in ThisBuild).value
   )
 
